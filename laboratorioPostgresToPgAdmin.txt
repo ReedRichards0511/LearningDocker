@@ -1,0 +1,14 @@
+#contenedor postgresDB
+docker container run -d --name postgres-db -e POSTGRES_PASSWORD=123456 -v postgres-db:/var/lib/postgresql/data postgres:15.1
+
+#contenedor pgAdmin
+docker container run --name pgAdmin -e PGADMIN_DEFAULT_PASSWORD=123456  -e PGADMIN_DEFAULT_EMAIL=superman@google.com -dp 8080:80 dpage/pgadmin4:6.17
+
+
+#docker newtwork
+
+docker network create postgres-net
+
+
+#add container to network
+docker network connect postgres-net 7012ece00c5b
